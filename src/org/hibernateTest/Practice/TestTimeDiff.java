@@ -1,5 +1,6 @@
 package org.hibernateTest.Practice;
 
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
@@ -7,6 +8,8 @@ import java.util.TimeZone;
 public class TestTimeDiff {
 
     public static void main(String[] args){
+
+        System.out.println(new Timestamp(System.currentTimeMillis()));
 
         System.out.println(new SimpleDateFormat("YYYY-MM-dd").format(new Date()));
         long diff= 5161000;
