@@ -9,7 +9,6 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 
 import java.sql.Timestamp;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -40,7 +39,7 @@ public class TestData2 {
     }
 
 
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args)  {
 
         TestData2 testData = new TestData2();
 
@@ -49,14 +48,14 @@ public class TestData2 {
 
     }
 
-    public void getQuery() throws ParseException {
+    public void getQuery(){
 
         Session session = getSessionFactory().openSession();
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
 
-            //Query for just UNET-PROVIDER
+            //Query for UNET-PROVIDER
             List list_1 = session.createQuery("from frameworkBS where INVOK_ID in ('NONE','UNET') and BTCH_NM in ('seqOPASndRjctReport'," +
                     "'seqLoad835DbPrePr','seqEmptyClmStg','seqOPAITKLdStg','seqOPATruncateRlseTables'," +
                     "'seqOPALoadReleaseProcessing','seqOPAPaymentProcessing','seqOPA835PostpaymentLoad'," +
@@ -66,6 +65,14 @@ public class TestData2 {
                     "to_char(CREAT_DTTM, 'yyyy-MM-dd') = '2019-11-18' order by CREAT_DTTM").list();
             System.out.println("transaction_1 for UNET-PROVIDER started");
             printTimeDiff(list_1, session);
+
+            //Query for UNET-MEMBER
+            List list_2 = session.createQuery("from frameworkBS where INVOK_ID in ('NONE','PE','401','UNET') and BTCH_NM in ('seqMbrEmptyStgBkt'," +
+                    "'seqMbrITKExtrc','seqProcessTopsDBI','seqOPAGenDBITopsFeedback','seqMbrSchedule','seqMbrEmptyRlseBkt'," +
+                    "'seqMbrExtLoadHarvesting','seqMbrPayment1','seqMbrOTSUnlockUnused','seqMbrOFSPmtData','seqBenHdrIDMbrGenReqFile'," +
+                    "'seqBenHdrIDMbrLoadRespTbl','seqMbrEOBFile','seqeHealthMbrCreateFeedBckFiles','seqMbr03CreateFICSFile') and " +
+                    "to_char(CREAT_DTTM, 'yyyy-MM-dd') = '2019-11-18' order by CREAT_DTTM").list();
+            System.out.println("transaction_2 for UNET-MEMBER started");
             tx.commit();
         }
         catch(HibernateException ex){
@@ -168,11 +175,11 @@ public class TestData2 {
 
 
         //if Pre-Pre Processor is already completed
-        else {
-            System.out.println("job done");
+        else if(list_1.size()>4 && list_1.size()==5){
+            System.out.println("job completed");
             frameworkBS fb = (frameworkBS) list_1.get(3);
             end_PrePreProcessor = fb.getEND_DTTM();
-            System.out.println("the end time of Pre-Pre Processor"+ end_PrePreProcessor);
+//            System.out.println("the end time of Pre-Pre Processor"+ end_PrePreProcessor);
         }
 
 //        itr_1.next();
