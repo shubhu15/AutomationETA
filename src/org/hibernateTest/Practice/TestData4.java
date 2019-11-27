@@ -15,7 +15,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 
-public class TestData3 {
+public class TestData4 {
 
     Timestamp curr_Timestamp = new Timestamp(System.currentTimeMillis());
     private static SessionFactory sessionFactory = null;
@@ -88,7 +88,7 @@ public class TestData3 {
 
     public static void main(String[] args)  {
 
-        TestData3 testData = new TestData3();
+        TestData4 testData = new TestData4();
 
         String current_date = new SimpleDateFormat("YYYY-MM-dd").format(new Date());
         current_date = "2019-11-26";
@@ -181,7 +181,6 @@ public class TestData3 {
         for(int i=0; i<list.size(); i++){
             System.out.println(i);
 
-            System.out.println(list.get(i).getBTCH_NM());
             if(i==0 && list.get(i).getBTCH_NM().equals("seqEmptyClmStg")){
                 start_PrePreProcessor = list.get(i).getSTRT_DTTM();
 
@@ -204,8 +203,8 @@ public class TestData3 {
 //            else if(i<3)
 
 
-
-            else if(list.get(i).getBTCH_NM().equals("seqOPAUnetPreProc")){
+            if(!list.get(i).getBTCH_NM().equals("seqOPAUnetPrePro6c")){
+//                System.out.println(end_PreProcessor == null);
                 if(end_PrePreProcessor != null && end_PreProcessor == null){
                     System.out.println("on plan");
                     l1 = aWeekBackObject("NONE", "seqOPAUnetPreProc", dateALastWeek(list.get(i).getCREAT_DTTM()), session);
@@ -221,7 +220,7 @@ public class TestData3 {
 //            }
 
 
-            else if(list.get(i).getBTCH_NM().equals("seqOPAITKLdStg")){
+            if(!list.get(i).getBTCH_NM().equals("seqOPAITKLdStg")){
                 if(end_PreProcessor != null && end_Intake == null){
                     System.out.println("on plan");
                     l1 = aWeekBackObject("UNET","seqOPAITKLdStg", dateALastWeek(list.get(i).getCREAT_DTTM()), session);
@@ -237,7 +236,7 @@ public class TestData3 {
 //                end_Intake = list.get(i).getEND_DTTM();
 //            }
 
-            else if(list.get(i).getBTCH_NM().equals("seqOPATruncateRlseTables")){
+            if(!list.get(i).getBTCH_NM().equals("seqOPATruncateRlseTables")){
                 if(end_Intake != null && end_Scheduling == null){
                     System.out.println("on plan");
                     l1 = aWeekBackObject("UNET","seqOPATruncateRlseTables", dateALastWeek(curr_Timestamp), session);
@@ -253,7 +252,7 @@ public class TestData3 {
 //                end_Scheduling = list.get(i).getEND_DTTM();
 //            }
 
-            else if (list.get(i).getBTCH_NM().equals("seqOPALoadReleaseProcessing")){
+            if (!list.get(i).getBTCH_NM().equals("seqOPALoadReleaseProcessing")){
                 if (end_Scheduling != null && end_ReleaseNConsolidation== null){
                     System.out.println("on plan");
                     l1 = aWeekBackObject("UNET","seqOPALoadReleaseProcessing", dateALastWeek(curr_Timestamp), session);
@@ -269,7 +268,7 @@ public class TestData3 {
 //                end_ReleaseNConsolidation = list.get(i).getEND_DTTM();
 //            }
 
-            else if(list.get(i).getBTCH_NM().equals("seqOPAPaymentProcessing")){
+            if(!list.get(i).getBTCH_NM().equals("seqOPAPaymentProcessing")){
                 if(end_ReleaseNConsolidation != null && end_PaymentProcessing== null){
                     System.out.println("on plan");
                     l1 = aWeekBackObject("UNET","seqOPAPaymentProcessing", dateALastWeek(curr_Timestamp), session);
@@ -285,7 +284,7 @@ public class TestData3 {
 //                end_PaymentProcessing = list.get(i).getEND_DTTM();
 //            }
 
-            else if(list.get(i).getBTCH_NM().equals("seqCreateUCASDailyExt")){
+            if(!list.get(i).getBTCH_NM().equals("seqCreateUCASDailyExt")){
                 if(end_PaymentProcessing!= null && end_PostPaymentExtract==null){
                     System.out.println("on plan");
                     l1 = aWeekBackObject("NONE", "seqCreateUCASDailyExt", dateALastWeek(curr_Timestamp), session);
@@ -300,7 +299,7 @@ public class TestData3 {
 //                end_PostPaymentExtract = list.get(i).getEND_DTTM();
 //            }
 
-            else if(list.get(i).getBTCH_NM().equals("seqOPA835PostpaymentLoad")){
+            if(!list.get(i).getBTCH_NM().equals("seqOPA835PostpaymentLoad")){
                 if(end_PaymentProcessing!=null && end_835EPS_B2B == null){
                     System.out.println("on plan");
                     l1 = aWeekBackObject("UNET","seqOPA835PostpaymentLoad", dateALastWeek(curr_Timestamp), session);
@@ -316,7 +315,7 @@ public class TestData3 {
 //                end_835EPS_B2B = list.get(i).getEND_DTTM();
 //            }
 
-            else if(list.get(i).getBTCH_NM().equals("seqOPACreateEPSFile")){
+            if(!list.get(i).getBTCH_NM().equals("seqOPACreateEPSFile")){
                 if(end_835EPS_B2B!=null && end_EPSFundingFile== null){
                     System.out.println("on plan");
                     l1 = aWeekBackObject("UNET", "seqOPACreateEPSFile", dateALastWeek(curr_Timestamp), session);
@@ -331,7 +330,7 @@ public class TestData3 {
 //                end_EPSFundingFile = list.get(i).getEND_DTTM();
 //            }
 
-            else if(list.get(i).getBTCH_NM().equals("seqOPAEPSReport_FS")){
+            if(!list.get(i).getBTCH_NM().equals("seqOPAEPSReport_FS")){
                 if(end_EPSFundingFile!=null && end_FundingReport==null){
                     System.out.println("on plan");
                     l1 = aWeekBackObject("UNET", "seqOPAEPSReport_FS", dateALastWeek(curr_Timestamp), session);
@@ -346,7 +345,7 @@ public class TestData3 {
 //                end_FundingReport = list.get(i).getEND_DTTM();
 //            }
 
-            else if(list.get(i).getBTCH_NM().equals("seqOPAProvPRAFile")){
+            if(!list.get(i).getBTCH_NM().equals("seqOPAProvPRAFile")){
                 if(end_EPSFundingFile!=null && end_ProviderPRA==null){
                     System.out.println("on plan");
                     l1 = aWeekBackObject("UNET", "seqOPAProvPRAFile", dateALastWeek(curr_Timestamp), session);
