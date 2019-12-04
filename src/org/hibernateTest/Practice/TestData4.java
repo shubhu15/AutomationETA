@@ -120,6 +120,8 @@ public class TestData4 {
             List<cycleDate> list_n = session.createQuery("from cycleDate where PARM_NM ='CycleDate'").list();
             System.out.println(list_n.get(0).getUPDT_DTTM());
             Timestamp cycledate_start = list_n.get(0).getUPDT_DTTM();
+            String  cycle_dt = new SimpleDateFormat("dd-MMM-yy hh.mm.ss a").format(new Date(cycledate_start.getTime()));
+            System.out.println(cycle_dt);
 
 
             //Query for UNET-PROVIDER
@@ -129,7 +131,7 @@ public class TestData4 {
                     "'seqOPAPrvdrSchedulingFS','seqOPAFSPrvConsldtData','seqOPAFullSrcPrvPymtPrcsngFnlzn'," +
                     "'seqOPA835ValX12FileCreationPayables','seqOPACreateEPSFile','seqOPAEPSReport_FS'," +
                     "'seqOPAProvPRAFile','seqOPAUnetPreProc','seqCreateUCASDailyExt') and " +
-                    "CREAT_DTTM >= '"+ cycledate_start+
+                    "CREAT_DTTM >= '"+ cycle_dt+
                     "' order by CREAT_DTTM").list();
             System.out.println("transaction_1 for UNET-PROVIDER started");
             printTimeDiff(list_main, session);
