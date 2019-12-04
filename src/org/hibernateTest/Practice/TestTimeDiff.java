@@ -2,6 +2,7 @@ package org.hibernateTest.Practice;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
 
@@ -10,6 +11,11 @@ public class TestTimeDiff {
     public static void main(String[] args){
 
         System.out.println(new Timestamp(System.currentTimeMillis()));
+
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DAY_OF_YEAR, -1);
+        Timestamp curr_Timestamp = new Timestamp(cal.getTimeInMillis());
+        System.out.println(curr_Timestamp);
 
         System.out.println(new SimpleDateFormat("YYYY-MM-dd").format(new Date()));
         long diff= 5161000;
