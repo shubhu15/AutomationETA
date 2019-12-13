@@ -18,7 +18,7 @@ import java.util.TimeZone;
 
 public class TestData4 {
 
-    Timestamp curr_Timestamp = new Timestamp(System.currentTimeMillis());
+//    Timestamp curr_Timestamp = new Timestamp(System.currentTimeMillis());
     private static SessionFactory sessionFactory = null;
     private static Timestamp start_PrePreProcessor = null;
 
@@ -210,7 +210,7 @@ public class TestData4 {
 
             if(i==0 && list.get(i).getBTCH_NM().equals("seqEmptyClmStg")){
                 start_PrePreProcessor = list.get(i).getSTRT_DTTM();
-                l1 = aWeekBackObject("NONE", "seqEmptyClmStg", dateALastWeek(curr_Timestamp), session);
+                l1 = aWeekBackObject("NONE", "seqEmptyClmStg", dateALastWeek(list.get(i).getCREAT_DTTM()), session);
                 start_PrePreProcessor_aWeekAgo = l1.get(1).getSTRT_DTTM();
             }
 
@@ -270,8 +270,8 @@ public class TestData4 {
                 if(end_Intake != null && end_Scheduling == null){
                     flag_Scheduling =0;
                     System.out.println("on plan");
-                    l1 = aWeekBackObject("UNET","seqOPATruncateRlseTables", dateALastWeek(curr_Timestamp), session);
-                    l2 = aWeekBackObject("UNET", "seqOPAPrvdrSchedulingFS", dateALastWeek(curr_Timestamp),session);
+                    l1 = aWeekBackObject("UNET","seqOPATruncateRlseTables", dateALastWeek(list.get(i).getCREAT_DTTM()), session);
+                    l2 = aWeekBackObject("UNET", "seqOPAPrvdrSchedulingFS", dateALastWeek(list.get(i).getCREAT_DTTM()),session);
 //                    start_Scheduling_aWeekAgo = l1.get(0).getSTRT_DTTM();
 //                    end_Scheduling_aWeekAgo = l2.get(0).getEND_DTTM();
                     long sf = timeDiffCalculate(l2.get(0).getEND_DTTM(), l1.get(0).getSTRT_DTTM());
@@ -287,8 +287,8 @@ public class TestData4 {
                 if (end_Scheduling != null && end_ReleaseNConsolidation== null){
                     flag_ReleaseNConsolidation =0;
                     System.out.println("on plan");
-                    l1 = aWeekBackObject("UNET","seqOPALoadReleaseProcessing", dateALastWeek(curr_Timestamp), session);
-                    l2 = aWeekBackObject("UNET", "seqOPAFSPrvConsldtData", dateALastWeek(curr_Timestamp),session);
+                    l1 = aWeekBackObject("UNET","seqOPALoadReleaseProcessing", dateALastWeek(list.get(i).getCREAT_DTTM()), session);
+                    l2 = aWeekBackObject("UNET", "seqOPAFSPrvConsldtData", dateALastWeek(list.get(i).getCREAT_DTTM()),session);
 //                    start_ReleaseNConsolidation_aWeekAgo = l1.get(0).getSTRT_DTTM();
 //                    end_ReleaseNConsolidation_aWeekAgo = l2.get(0).getEND_DTTM();
                     long sf = timeDiffCalculate(l2.get(0).getEND_DTTM(), l1.get(0).getSTRT_DTTM());
@@ -304,8 +304,8 @@ public class TestData4 {
                 if(end_ReleaseNConsolidation != null && end_PaymentProcessing== null){
                     flag_PaymentProcessing =0;
                     System.out.println("on plan");
-                    l1 = aWeekBackObject("UNET","seqOPAPaymentProcessing", dateALastWeek(curr_Timestamp), session);
-                    l2 = aWeekBackObject("UNET", "seqOPAFullSrcPrvPymtPrcsngFnlzn", dateALastWeek(curr_Timestamp),session);
+                    l1 = aWeekBackObject("UNET","seqOPAPaymentProcessing", dateALastWeek(list.get(i).getCREAT_DTTM()), session);
+                    l2 = aWeekBackObject("UNET", "seqOPAFullSrcPrvPymtPrcsngFnlzn", dateALastWeek(list.get(i).getCREAT_DTTM()),session);
 //                    start_PaymentProcessing_aWeekAgo = l1.get(0).getSTRT_DTTM();
 //                    end_PaymentProcessing_aWeekAgo = l2.get(0).getEND_DTTM();
                     long sf = timeDiffCalculate(l2.get(0).getEND_DTTM(),  l1.get(0).getSTRT_DTTM());
@@ -321,7 +321,7 @@ public class TestData4 {
                 if(end_PaymentProcessing!= null && end_PostPaymentExtract==null){
                     flag_PostPaymentExtract =0;
                     System.out.println("on plan");
-                    l1 = aWeekBackObject("NONE", "seqCreateUCASDailyExt", dateALastWeek(curr_Timestamp), session);
+                    l1 = aWeekBackObject("NONE", "seqCreateUCASDailyExt", dateALastWeek(list.get(i).getCREAT_DTTM()), session);
 //                    start_PostPaymentExtract_aWeekAgo = l1.get(0).getSTRT_DTTM();
 //                    end_PostPaymentExtract_aWeekAgo = l1.get(0).getEND_DTTM();
                     long sf = timeDiffCalculate( l1.get(0).getEND_DTTM(), l1.get(0).getSTRT_DTTM());
@@ -337,8 +337,8 @@ public class TestData4 {
                 if(end_PaymentProcessing!=null && end_835EPS_B2B == null){
                     flag_835EPS_B2B =0;
                     System.out.println("on plan");
-                    l1 = aWeekBackObject("UNET","seqOPA835PostpaymentLoad", dateALastWeek(curr_Timestamp), session);
-                    l2 = aWeekBackObject("UNET", "seqOPA835ValX12FileCreationPayables", dateALastWeek(curr_Timestamp),session);
+                    l1 = aWeekBackObject("UNET","seqOPA835PostpaymentLoad", dateALastWeek(list.get(i).getCREAT_DTTM()), session);
+                    l2 = aWeekBackObject("UNET", "seqOPA835ValX12FileCreationPayables", dateALastWeek(list.get(i).getCREAT_DTTM()),session);
 //                    start_835EPS_B2B_aWeekAgo = l1.get(0).getSTRT_DTTM();
 //                    end_835EPS_B2B_aWeekAgo = l2.get(0).getEND_DTTM();
                     long sf = timeDiffCalculate(l2.get(0).getEND_DTTM(), l1.get(0).getSTRT_DTTM());
@@ -354,7 +354,7 @@ public class TestData4 {
                 if(end_835EPS_B2B!=null && end_EPSFundingFile== null){
                     flag_EPSFundingFile =0;
                     System.out.println("on plan");
-                    l1 = aWeekBackObject("UNET", "seqOPACreateEPSFile", dateALastWeek(curr_Timestamp), session);
+                    l1 = aWeekBackObject("UNET", "seqOPACreateEPSFile", dateALastWeek(list.get(i).getCREAT_DTTM()), session);
 //                    start_EPSFundingFile_aWeekAgo = l1.get(0).getSTRT_DTTM();
 //                    end_EPSFundingFile_aWeekAgo = l1.get(0).getEND_DTTM();
                     long sf = timeDiffCalculate(l1.get(0).getEND_DTTM(), l1.get(0).getSTRT_DTTM());
@@ -370,7 +370,7 @@ public class TestData4 {
                 if(end_EPSFundingFile!=null && end_FundingReport==null){
                     flag_FundingReport = 0;
                     System.out.println("on plan");
-                    l1 = aWeekBackObject("UNET", "seqOPAEPSReport_FS", dateALastWeek(curr_Timestamp), session);
+                    l1 = aWeekBackObject("UNET", "seqOPAEPSReport_FS", dateALastWeek(list.get(i).getCREAT_DTTM()), session);
 //                    start_FundingReport_aWeekAgo = l1.get(0).getSTRT_DTTM();
 //                    end_FundingReport_aWeekAgo = l1.get(0).getEND_DTTM();
                     long sf = timeDiffCalculate(l1.get(0).getEND_DTTM(), l1.get(0).getSTRT_DTTM());
@@ -386,7 +386,7 @@ public class TestData4 {
                 if(end_EPSFundingFile!=null && end_ProviderPRA==null){
                     flag_ProviderPRA =0;
                     System.out.println("on plan");
-                    l1 = aWeekBackObject("UNET", "seqOPAProvPRAFile", dateALastWeek(curr_Timestamp), session);
+                    l1 = aWeekBackObject("UNET", "seqOPAProvPRAFile", dateALastWeek(list.get(i).getCREAT_DTTM()), session);
 //                    start_ProviderPRA_aWeekAgo = l1.get(0).getSTRT_DTTM();
 //                    end_ProviderPRA_aWeekAgo = l1.get(0).getEND_DTTM();
                     long sf = timeDiffCalculate(l1.get(0).getEND_DTTM(), l1.get(0).getSTRT_DTTM());
