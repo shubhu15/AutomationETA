@@ -5,10 +5,15 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class TestTimeDiff {
 
+    private static Logger logger = LogManager.getLogger(TestTimeDiff.class);
     public static void main(String[] args){
+
+        logger.info("done logging");
 
         System.out.println(new Timestamp(System.currentTimeMillis()));
 

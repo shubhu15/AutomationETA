@@ -9,5 +9,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="ojdbc8-12.2.0.1" level="project" />
     <orderEntry type="library" name="hibernate lib" level="project" />
+    <orderEntry type="library" name="apache-log4j-2" level="project" />
   </component>
 </module>
