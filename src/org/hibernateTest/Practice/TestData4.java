@@ -42,7 +42,6 @@ public class TestData4 {
     private static Timestamp end_ReleaseNConsolidation = null;
     private static int flag_ReleaseNConsolidation=1;
 
-
     private static Timestamp end_PaymentProcessing = null;
     private static int flag_PaymentProcessing=1;
 
@@ -127,6 +126,7 @@ public class TestData4 {
                     "'seqBenHdrIDMbrLoadRespTbl','seqMbrEOBFile','seqeHealthMbrCreateFeedBckFiles','seqMbr03CreateFICSFile') and " +
                     "to_char(CREAT_DTTM, 'yyyy-MM-dd') = '2019-11-18' order by CREAT_DTTM").list();
             System.out.println("transaction_2 for UNET-MEMBER started");
+            printTimeDiff_member(list_2, session);
             tx.commit();
         }
         catch(HibernateException ex){
@@ -143,6 +143,12 @@ public class TestData4 {
     }
 
 
+    public void printTimeDiff_member(List<frameworkBS> list, Session session){
+
+
+    }
+
+
     public String dateALastWeek(Timestamp current_date){
         Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(current_date.getTime());
@@ -155,7 +161,13 @@ public class TestData4 {
 
     public List<frameworkBS> aWeekBackObject(String INVOK_ID, String  BTCH_NM, String dateAweekBack,Session session){
         Query q2 = session.createQuery("from frameworkBS where INVOK_ID = '"+ INVOK_ID+"' and BTCH_NM = '"+ BTCH_NM+"' and to_char(CREAT_DTTM, 'YYYY-MM-DD')='" + dateAweekBack + "' order by CREAT_DTTM desc");
-        return q2.list();
+        if(q2.list().size()<1){
+            String day = dateAweekBack.substring(8,10);
+            String dateAweekback2 = dateAweekBack.replace(day,Integer.toString(Integer.valueOf(day)+1));
+            return session.createQuery("from frameworkBS where INVOK_ID = '"+ INVOK_ID+"' and BTCH_NM = '"+ BTCH_NM+"' and to_char(CREAT_DTTM, 'YYYY-MM-DD')='" + dateAweekback2 + "' order by CREAT_DTTM").list();
+        }
+        else{
+        return q2.list();}
 
     }
 
@@ -264,7 +276,7 @@ public class TestData4 {
                     System.out.println("the end time of Intake"+ end_Intake /* added to end time of preprocessor*/);
                 }
             }
-            if (list.get(i).getBTCH_NM().equals("seqOPAITKLdStg") && !list.get(i).getBTCH_STS_CD().equals("C")){
+            if (list.get(i).getBTCH_NM().equals("seqOPAITKLdStg") && list.size()<7){
                 System.out.println("in progress");
                 l1 = aWeekBackObject("UNET","seqOPAITKLdStg", dateALastWeek(list.get(i).getCREAT_DTTM()), session);
                 l2 = aWeekBackObject("UNET", "seqOPASndRjctReport", dateALastWeek(list.get(i).getCREAT_DTTM()), session);
@@ -318,7 +330,7 @@ public class TestData4 {
                     System.out.println("the end time of Release & Consolidation"+ end_ReleaseNConsolidation /* added to end time of Scheduling*/);
                 }
             }
-            if(list.get(i).getBTCH_NM().equals("seqOPALoadReleaseProcessing") && !list.get(i).getBTCH_STS_CD().equals("C")) {
+            if(list.get(i).getBTCH_NM().equals("seqOPALoadReleaseProcessing") && list.size()<11) {
                 System.out.println("in progress");
                 l1 = aWeekBackObject("UNET","seqOPALoadReleaseProcessing", dateALastWeek(list.get(i).getCREAT_DTTM()), session);
                 l2 = aWeekBackObject("UNET", "seqOPAFSPrvConsldtData", dateALastWeek(list.get(i).getCREAT_DTTM()),session);
