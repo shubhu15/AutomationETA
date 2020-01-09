@@ -19,6 +19,7 @@ public class TestData2 {
 
 
 
+
     private static SessionFactory buildSessionFactory() {
         try {
             return new Configuration().configure().buildSessionFactory();

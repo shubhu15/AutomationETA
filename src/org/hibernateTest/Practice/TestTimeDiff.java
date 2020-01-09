@@ -14,13 +14,19 @@ public class TestTimeDiff {
     public static void main(String[] args){
 
         logger.info("done logging");
-
+String s = "bob wrote"+7+" java";
+        System.out.println(s);
         System.out.println(new Timestamp(System.currentTimeMillis()));
+
 
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DAY_OF_YEAR, -1);
-        Timestamp curr_Timestamp = new Timestamp(cal.getTimeInMillis());
+        Timestamp tm = new Timestamp(cal.getTime().getTime());
+        s = tm.toString().substring(0, 10);
+
+        Timestamp curr_Timestamp = new Timestamp(cal.getTimeInMillis()+1800000);
         System.out.println(curr_Timestamp);
+        System.out.println(new SimpleDateFormat("MM/dd/YY hh:mm a").format(curr_Timestamp));
 
         System.out.println(new SimpleDateFormat("YYYY-MM-dd").format(new Date()));
         long diff= 5161000;
@@ -39,6 +45,9 @@ public class TestTimeDiff {
         df.setTimeZone(TimeZone.getTimeZone("GMT"));
         System.out.println("diff_time"+ df.format(new Date(sec * 1000L)) );
 
+        TestTimeDiff testTimeDiff = new TestTimeDiff();
+        testTimeDiff.test();
+        System.out.println("nowwwwwww");
 
 //            Optional list2 = session.createQuery("from frameworkBS where INVOK_ID = 'UNET' and BTCH_NM in ('seqOPASndRjctReport'," +
 //                    "'seqOPAPrvdrSchedulingFS','seqOPAFSPrvConsldtData','seqOPAFullSrcPrvPymtPrcsngFnlzn'," +
@@ -47,5 +56,11 @@ public class TestTimeDiff {
 //            System.out.println("transaction_1 started");
 //            demoTime(list2,tx, session);
 
+    }
+
+
+    public void test(){
+        System.out.println("hello");
+        return;
     }
 }
