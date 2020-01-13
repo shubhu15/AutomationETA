@@ -72,7 +72,7 @@ public class UNETProviderETA {
             Timestamp cycledate_start = list_n.get(0).getUPDT_DTTM();
             String  cycle_dt = new SimpleDateFormat("dd-MMM-yy hh.mm.ss a").format(new Date(cycledate_start.getTime()));
             System.out.println(cycle_dt);
-            cycle_dt="08-Jan-20 02.08.08 AM";
+//            cycle_dt="10-Jan-20 02.08.08 AM";
             logger.info("SAVING LOGS FOR " + cycle_dt + "at " +curr_date);
 
 

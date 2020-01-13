@@ -1,12 +1,10 @@
 package org.hibernateTest.Practice;
 
 import org.Test.modelClass.frameworkBS;
-import org.apache.poi.ss.formula.functions.T;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -15,7 +13,6 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.*;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 public class ExcelComparison {
@@ -184,7 +181,7 @@ public class ExcelComparison {
             rowindex =0;
         }
 
-        if(xssfSheet.getRow(rowindex).createCell(3).getStringCellValue().isEmpty()){
+        if(xssfSheet.getRow(rowindex).getCell(3).getStringCellValue().isEmpty()){
             return;
         }
         else{
@@ -197,18 +194,31 @@ public class ExcelComparison {
             row.createCell(cellnum).setCellValue("Actual time of completion");
             cellnum =0;
 
+            xssfSheet.createRow(rowindex).createCell(3);
             xssfSheet.createRow(rowindex++).createCell(cellnum).setCellValue("EPS Enrollment");
+            xssfSheet.createRow(rowindex).createCell(3);
             xssfSheet.createRow(rowindex++).createCell(cellnum).setCellValue("Pre-Pre Processor");
+            xssfSheet.createRow(rowindex).createCell(3);
             xssfSheet.createRow(rowindex++).createCell(cellnum).setCellValue("Pre-Processor");
+            xssfSheet.createRow(rowindex).createCell(3);
             xssfSheet.createRow(rowindex++).createCell(cellnum).setCellValue("Intake");
+            xssfSheet.createRow(rowindex).createCell(3);
             xssfSheet.createRow(rowindex++).createCell(cellnum).setCellValue("Scheduling");
+            xssfSheet.createRow(rowindex).createCell(3);
             xssfSheet.createRow(rowindex++).createCell(cellnum).setCellValue("Release & Consolidation");
+            xssfSheet.createRow(rowindex).createCell(3);
             xssfSheet.createRow(rowindex++).createCell(cellnum).setCellValue("Payment Processing");
+            xssfSheet.createRow(rowindex).createCell(3);
             xssfSheet.createRow(rowindex++).createCell(cellnum).setCellValue("835 EPS/B2B");
+            xssfSheet.createRow(rowindex).createCell(3);
             xssfSheet.createRow(rowindex++).createCell(cellnum).setCellValue("EPS Funding File");
+            xssfSheet.createRow(rowindex).createCell(3);
             xssfSheet.createRow(rowindex++).createCell(cellnum).setCellValue("Funding Report");
+            xssfSheet.createRow(rowindex).createCell(3);
             xssfSheet.createRow(rowindex++).createCell(cellnum).setCellValue("Provider PRA");
+            xssfSheet.createRow(rowindex).createCell(3);
             xssfSheet.createRow(rowindex).createCell(cellnum).setCellValue("Post Payment Extract(OTS,TOPS, UCAS)");
+            xssfSheet.createRow(rowindex).createCell(3);
 
             writeWorkbook(file);
 

@@ -328,7 +328,7 @@ public class TestData4 {
                     System.out.println("the end time of Intake"+ addExtraMargin(end_Intake, 1800000) /* added to end time of preprocessor*/);
                 }
             }
-            if (list.get(i).getBTCH_NM().equals("seqOPAITKLdStg") && list.size()<7){
+            if (list.get(i).getBTCH_NM().equals("seqOPAITKLdStg") && (list.get(i).getBTCH_STS_CD().equals("C") || list.get(i).getBTCH_STS_CD().equals("R"))){
                 System.out.println("in progress");
                 l1 = aWeekBackObject("UNET","seqOPAITKLdStg", dateALastWeek(list.get(i).getCREAT_DTTM()), session);
                 l2 = aWeekBackObject("UNET", "seqOPASndRjctReport", dateALastWeek(list.get(i).getCREAT_DTTM()), session);
