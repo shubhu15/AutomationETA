@@ -1,0 +1,32 @@
+2020-01-10 20:06:10.192 [main] INFO  org.hibernateTest.Practice.TestTimeDiff - SAVING LOGS FOR 10-Jan-20 02.08.06 AMat 2020-01-10 08:05:56
+2020-01-10 20:06:10.617 [main] INFO  org.hibernateTest.Practice.TestTimeDiff - transaction_1 for UNET-PROVIDER started
+2020-01-10 20:06:11.714 [main] INFO  org.hibernateTest.Practice.TestTimeDiff -  PrePreProcessor on plan with ETA = 01/10/20 10:56 AM CST
+2020-01-10 20:06:12.225 [main] INFO  org.hibernateTest.Practice.TestTimeDiff -  Pre Process on plan with ETA = 01/10/20 11:16 AM CST
+2020-01-10 20:06:13.267 [main] INFO  org.hibernateTest.Practice.TestTimeDiff -  Intake on plan with ETA = 01/10/20 01:38 PM CST
+2020-01-10 20:06:14.289 [main] INFO  org.hibernateTest.Practice.TestTimeDiff -  Scheduling on plan with ETA = 01/10/20 01:59 PM CST
+2020-01-10 20:06:15.335 [main] INFO  org.hibernateTest.Practice.TestTimeDiff -  Release & Consolidation on plan with ETA = 01/10/20 05:38 PM CST
+2020-01-10 20:06:16.362 [main] INFO  org.hibernateTest.Practice.TestTimeDiff -  Payment Processing on plan with ETA = 01/10/20 05:59 PM CST
+2020-01-10 20:06:16.878 [main] INFO  org.hibernateTest.Practice.TestTimeDiff -  Post Payment Extract (OTS,TOPS, UCAS on plan with ETA = 01/10/20 06:24 PM CST
+2020-01-10 20:06:17.903 [main] INFO  org.hibernateTest.Practice.TestTimeDiff -  835 EPS/B2B on plan with ETA = 01/10/20 07:43 PM CST
+2020-01-10 20:06:18.413 [main] INFO  org.hibernateTest.Practice.TestTimeDiff -  EPS Funding File on plan with ETA = 01/10/20 07:46 PM CST
+2020-01-10 20:06:18.919 [main] INFO  org.hibernateTest.Practice.TestTimeDiff -  Funding Report on plan with ETA = 01/10/20 08:13 PM CST
+2020-01-10 20:06:19.436 [main] INFO  org.hibernateTest.Practice.TestTimeDiff -  Provider PRA on plan with ETA = 01/10/20 08:52 PM CST
+2020-01-10 20:06:31.687 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.4.6.Final}
+2020-01-10 20:06:31.937 [main] WARN  org.hibernate.orm.deprecation - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+2020-01-10 20:06:32.547 [main] INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-01-10 20:06:33.357 [main] WARN  org.hibernate.orm.deprecation - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-mapping. Use namespace http://www.hibernate.org/dtd/hibernate-mapping instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+2020-01-10 20:06:34.084 [main] WARN  org.hibernate.orm.deprecation - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-mapping. Use namespace http://www.hibernate.org/dtd/hibernate-mapping instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+2020-01-10 20:06:34.139 [main] WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2020-01-10 20:06:34.189 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001005: using driver [oracle.jdbc.driver.OracleDriver] at URL [jdbc:oracle:thin:@//ep02:1521/mdspr02svc.uhc.com]
+2020-01-10 20:06:34.190 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {user=UHG_001504675, password=ZXcv*a1z}
+2020-01-10 20:06:34.190 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+2020-01-10 20:06:34.194 [main] INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
+2020-01-10 20:06:38.237 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.Oracle12cDialect
+2020-01-10 20:06:42.193 [main] WARN  org.hibernate.orm.deprecation - HHH90000005: Defining an entity [org.Test.modelClass.cycleDate] with no physical id attribute is no longer supported; please map the identifier to a physical entity attribute
+2020-01-10 20:06:43.419 [main] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-01-10 20:06:44.898 [main] INFO  org.hibernateTest.Practice.TestTimeDiff - SAVING LOGS FOR 10-Jan-20 02.08.06 AMat 2020-01-10 08:06:30
+2020-01-10 20:06:45.255 [main] INFO  org.hibernateTest.Practice.TestTimeDiff - transaction_1 for UNET-PROVIDER started
+2020-01-10 20:06:46.371 [main] INFO  org.hibernateTest.Practice.TestTimeDiff -  PrePreProcessor on plan with ETA = 01/10/20 10:56 AM CST
+2020-01-10 20:06:46.908 [main] INFO  org.hibernateTest.Practice.TestTimeDiff -  Pre Process on plan with ETA = 01/10/20 11:16 AM CST
+2020-01-10 20:06:47.976 [main] INFO  org.hibernateTest.Practice.TestTimeDiff -  Intake on plan with ETA = 01/10/20 01:38 PM CST
+2020-01-10 20:06:49.036 [main] INFO  org.hibernateTest.Practice.TestTimeDiff -  Scheduling on plan with ETA = 01/10/20 01:59 PM CST

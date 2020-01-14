@@ -1,0 +1,27 @@
+2020-01-09 13:59:21.751 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.4.6.Final}
+2020-01-09 13:59:22.251 [main] WARN  org.hibernate.orm.deprecation - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+2020-01-09 13:59:23.708 [main] INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-01-09 13:59:25.838 [main] WARN  org.hibernate.orm.deprecation - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-mapping. Use namespace http://www.hibernate.org/dtd/hibernate-mapping instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+2020-01-09 13:59:26.984 [main] WARN  org.hibernate.orm.deprecation - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-mapping. Use namespace http://www.hibernate.org/dtd/hibernate-mapping instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+2020-01-09 13:59:27.079 [main] WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2020-01-09 13:59:27.173 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001005: using driver [oracle.jdbc.driver.OracleDriver] at URL [jdbc:oracle:thin:@//ep02:1521/mdspr02svc.uhc.com]
+2020-01-09 13:59:27.174 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {user=UHG_001504675, password=ZXcv*a1z}
+2020-01-09 13:59:27.174 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+2020-01-09 13:59:27.182 [main] INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
+2020-01-09 13:59:31.792 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.Oracle12cDialect
+2020-01-09 13:59:36.404 [main] WARN  org.hibernate.orm.deprecation - HHH90000005: Defining an entity [org.Test.modelClass.cycleDate] with no physical id attribute is no longer supported; please map the identifier to a physical entity attribute
+2020-01-09 13:59:37.846 [main] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-01-09 14:08:26.210 [main] INFO  org.hibernateTest.Practice.TestTimeDiff - done logging
+2020-01-09 14:11:36.122 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.4.6.Final}
+2020-01-09 14:11:36.376 [main] WARN  org.hibernate.orm.deprecation - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+2020-01-09 14:11:37.104 [main] INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-01-09 14:11:37.904 [main] WARN  org.hibernate.orm.deprecation - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-mapping. Use namespace http://www.hibernate.org/dtd/hibernate-mapping instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+2020-01-09 14:11:38.561 [main] WARN  org.hibernate.orm.deprecation - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-mapping. Use namespace http://www.hibernate.org/dtd/hibernate-mapping instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+2020-01-09 14:11:38.610 [main] WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2020-01-09 14:11:38.659 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001005: using driver [oracle.jdbc.driver.OracleDriver] at URL [jdbc:oracle:thin:@//ep02:1521/mdspr02svc.uhc.com]
+2020-01-09 14:11:38.660 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {user=UHG_001504675, password=ZXcv*a1z}
+2020-01-09 14:11:38.660 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+2020-01-09 14:11:38.665 [main] INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
+2020-01-09 14:11:43.004 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.Oracle12cDialect
+2020-01-09 14:11:46.465 [main] WARN  org.hibernate.orm.deprecation - HHH90000005: Defining an entity [org.Test.modelClass.cycleDate] with no physical id attribute is no longer supported; please map the identifier to a physical entity attribute
+2020-01-09 14:11:47.653 [main] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]

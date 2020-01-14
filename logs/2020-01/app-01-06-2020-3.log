@@ -1,0 +1,16 @@
+2020-01-06 21:45:57.906 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+2020-01-06 21:45:57.931 [main] INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
+2020-01-06 21:46:03.453 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.Oracle12cDialect
+2020-01-06 21:46:06.911 [main] WARN  org.hibernate.orm.deprecation - HHH90000005: Defining an entity [org.Test.modelClass.cycleDate] with no physical id attribute is no longer supported; please map the identifier to a physical entity attribute
+2020-01-06 21:46:08.797 [main] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-01-06 21:46:10.398 [main] INFO  org.hibernateTest.Practice.TestTimeDiff - SAVING LOGS FOR 06-Jan-20 02.08.05 AM
+2020-01-06 21:46:10.822 [main] INFO  org.hibernateTest.Practice.TestTimeDiff - transaction_1 for UNET-PROVIDER started
+2020-01-06 21:46:12.532 [main] INFO  org.hibernateTest.Practice.TestTimeDiff -  Intake in progress with ETA = 01/06/20 02:01 PM CST
+2020-01-06 21:46:13.623 [main] INFO  org.hibernateTest.Practice.TestTimeDiff -  Scheduling on plan with ETA = 01/06/20 02:38 PM CST
+2020-01-06 21:46:14.721 [main] INFO  org.hibernateTest.Practice.TestTimeDiff -  Release & Consolidation on plan with ETA = 01/06/20 07:19 PM CST
+2020-01-06 21:46:15.808 [main] INFO  org.hibernateTest.Practice.TestTimeDiff -  Payment Processing on plan with ETA = 01/06/20 07:43 PM CST
+2020-01-06 21:46:16.335 [main] INFO  org.hibernateTest.Practice.TestTimeDiff -  Post Payment Extract (OTS,TOPS, UCAS on plan with ETA = 01/06/20 08:19 PM CST
+2020-01-06 21:46:17.428 [main] INFO  org.hibernateTest.Practice.TestTimeDiff -  835 EPS/B2B on plan with ETA = 01/06/20 10:07 PM CST
+2020-01-06 21:46:18.032 [main] INFO  org.hibernateTest.Practice.TestTimeDiff -  EPS Funding File on plan with ETA = 01/06/20 10:11 PM CST
+2020-01-06 21:46:18.575 [main] INFO  org.hibernateTest.Practice.TestTimeDiff -  Funding Report on plan with ETA = 01/06/20 10:42 PM CST
+2020-01-06 21:46:19.100 [main] INFO  org.hibernateTest.Practice.TestTimeDiff -  Provider PRA on plan with ETA = 01/06/20 11:38 PM CST

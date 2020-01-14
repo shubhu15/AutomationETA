@@ -1,0 +1,30 @@
+2020-01-10 20:02:14.983 [main] WARN  org.hibernate.orm.deprecation - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-mapping. Use namespace http://www.hibernate.org/dtd/hibernate-mapping instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+2020-01-10 20:02:15.067 [main] WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2020-01-10 20:02:15.131 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001005: using driver [oracle.jdbc.driver.OracleDriver] at URL [jdbc:oracle:thin:@//ep02:1521/mdspr02svc.uhc.com]
+2020-01-10 20:02:15.131 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {user=UHG_001504675, password=ZXcv*a1z}
+2020-01-10 20:02:15.133 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+2020-01-10 20:02:15.138 [main] INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
+2020-01-10 20:02:19.555 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.Oracle12cDialect
+2020-01-10 20:02:23.466 [main] WARN  org.hibernate.orm.deprecation - HHH90000005: Defining an entity [org.Test.modelClass.cycleDate] with no physical id attribute is no longer supported; please map the identifier to a physical entity attribute
+2020-01-10 20:02:24.693 [main] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-01-10 20:02:26.269 [main] INFO  org.hibernateTest.Practice.TestTimeDiff - SAVING LOGS FOR 10-Jan-20 02.08.06 AMat 2020-01-10 08:02:10
+2020-01-10 20:02:26.749 [main] INFO  org.hibernateTest.Practice.TestTimeDiff - transaction_1 for UNET-PROVIDER started
+2020-01-10 20:02:27.905 [main] INFO  org.hibernateTest.Practice.TestTimeDiff -  PrePreProcessor on plan with ETA = 01/10/20 10:56 AM CST
+2020-01-10 20:02:28.443 [main] INFO  org.hibernateTest.Practice.TestTimeDiff -  Pre Process on plan with ETA = 01/10/20 11:16 AM CST
+2020-01-10 20:02:29.554 [main] INFO  org.hibernateTest.Practice.TestTimeDiff -  Intake on plan with ETA = 01/10/20 01:38 PM CST
+2020-01-10 20:02:30.665 [main] INFO  org.hibernateTest.Practice.TestTimeDiff -  Scheduling on plan with ETA = 01/10/20 01:59 PM CST
+2020-01-10 20:02:31.756 [main] INFO  org.hibernateTest.Practice.TestTimeDiff -  Release & Consolidation on plan with ETA = 01/10/20 05:38 PM CST
+2020-01-10 20:02:32.835 [main] INFO  org.hibernateTest.Practice.TestTimeDiff -  Payment Processing on plan with ETA = 01/10/20 05:59 PM CST
+2020-01-10 20:02:33.381 [main] INFO  org.hibernateTest.Practice.TestTimeDiff -  Post Payment Extract (OTS,TOPS, UCAS on plan with ETA = 01/10/20 06:24 PM CST
+2020-01-10 20:02:34.484 [main] INFO  org.hibernateTest.Practice.TestTimeDiff -  835 EPS/B2B on plan with ETA = 01/10/20 07:43 PM CST
+2020-01-10 20:02:35.027 [main] INFO  org.hibernateTest.Practice.TestTimeDiff -  EPS Funding File on plan with ETA = 01/10/20 07:46 PM CST
+2020-01-10 20:02:35.579 [main] INFO  org.hibernateTest.Practice.TestTimeDiff -  Funding Report on plan with ETA = 01/10/20 08:13 PM CST
+2020-01-10 20:02:36.115 [main] INFO  org.hibernateTest.Practice.TestTimeDiff -  Provider PRA on plan with ETA = 01/10/20 08:52 PM CST
+2020-01-10 20:02:56.005 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.4.6.Final}
+2020-01-10 20:02:56.245 [main] WARN  org.hibernate.orm.deprecation - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+2020-01-10 20:02:56.821 [main] INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-01-10 20:02:57.837 [main] WARN  org.hibernate.orm.deprecation - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-mapping. Use namespace http://www.hibernate.org/dtd/hibernate-mapping instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+2020-01-10 20:02:58.482 [main] WARN  org.hibernate.orm.deprecation - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-mapping. Use namespace http://www.hibernate.org/dtd/hibernate-mapping instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+2020-01-10 20:02:58.555 [main] WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2020-01-10 20:02:58.618 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001005: using driver [oracle.jdbc.driver.OracleDriver] at URL [jdbc:oracle:thin:@//ep02:1521/mdspr02svc.uhc.com]
+2020-01-10 20:02:58.618 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {user=UHG_001504675, password=ZXcv*a1z}

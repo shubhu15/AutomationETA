@@ -2,10 +2,13 @@ package org.hibernateTest.Practice;
 
 import org.Test.modelClass.cycleDate;
 import org.Test.modelClass.frameworkBS;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 
 import java.sql.Timestamp;
@@ -15,7 +18,10 @@ import java.util.Date;
 import java.util.List;
 
 public class UNETMemberETA {
+    private static Logger logger = LogManager.getLogger(TestTimeDiff.class);
 
+
+    private static SessionFactory sessionFactory = null;
     public static Timestamp start_IntakeFileLoading = null;
 
     public static Timestamp end_IntakeFileLoading;
@@ -48,6 +54,7 @@ public class UNETMemberETA {
     private static int flag_PostPayExtract=1;
 
 
+
     public void getQuery(String curr_date, SessionFactory sessionFactory){
 
         Session session = sessionFactory.openSession();
@@ -61,7 +68,7 @@ public class UNETMemberETA {
             String  cycle_dt = new SimpleDateFormat("dd-MMM-yy hh.mm.ss a").format(new Date(cycledate_start.getTime()));
             System.out.println(cycle_dt+ " at " +curr_date);
 //            cycle_dt="08-Jan-20 02.08.08 AM";
-//            logger.info("SAVING LOGS FOR " + cycle_dt + " at " +curr_date);
+            logger.info("SAVING LOGS FOR " + cycle_dt + " at " +curr_date);
 
 
             //Query for UNET-MEMBER
@@ -69,7 +76,7 @@ public class UNETMemberETA {
                     "'seqMbrITKExtrc','seqProcessTopsDBI','seqOPAGenDBITopsFeedback','seqMbrSchedule','seqMbrEmptyRlseBkt'," +
                     "'seqMbrExtLoadHarvesting','seqMbrPayment1','seqMbrOTSUnlockUnused','seqMbrOFSPmtData','seqBenHdrIDMbrGenReqFile'," +
                     "'seqBenHdrIDMbrLoadRespTbl','seqMbrEOBFile','seqeHealthMbrCreateFeedBckFiles','seqMbr03CreateFICSFile') and " +
-                            "CREAT_DTTM >= '"+ cycle_dt+" order by CREAT_DTTM").list();
+                            "CREAT_DTTM >= '"+ cycle_dt+"' order by CREAT_DTTM").list();
             System.out.println("transaction_2 for UNET-MEMBER started");
             printTimeDiff_member(list_2, session);
             tx.commit();
@@ -92,7 +99,7 @@ public class UNETMemberETA {
 
         if(list.size()==0){
             System.out.println("Files not loaded yet! unable to calculate ETA!");
-//            logger.warn("Files not loaded yet! unable to calculate ETA!");
+            logger.warn("Files not loaded yet! unable to calculate ETA!");
             return;
         }
 
@@ -114,11 +121,11 @@ public class UNETMemberETA {
                     l1 = aWeekBackObject("NONE", "seqMbrITKExtrc", dateALastWeek(list.get(i).getCREAT_DTTM()), session);
                     long sf = timeDiffCalculate(l1.get(0).getEND_DTTM(), getStart_IntakeFileLoading_aWeekAgo());
                     setEnd_IntakeFileLoading(new Timestamp(sf+UNETMemberETA.getStart_IntakeFileLoading().getTime()));
-//                    logger.info(" Pre Process on plan with ETA = " + addExtraMargin(end_PreProcessor, 1800000));
-                    System.out.println("the end time of Pre-Process " + addExtraMargin(UNETMemberETA.getEnd_IntakeFileLoading(), 1800000) /* added to end time of prepreprocessor*/);
+                    logger.info(" Intake File Loading on plan with ETA = " + addExtraMargin(getEnd_IntakeFileLoading(), 1800000));
+                    System.out.println("the end time of Intake File Loading " + addExtraMargin(UNETMemberETA.getEnd_IntakeFileLoading(), 1800000) /* added to end time of prepreprocessor*/);
                 }
             }
-            if (list.get(i).getBTCH_NM().equals("seqMbrITKExtrc")) {
+            if (list.get(i).getBTCH_NM().equals("seqMbrITKExtrc") && list.size()<3) {
                 flag_IntakeFileLoading = 0;
                 if (list.get(i).getBTCH_STS_CD().equals("C")) {
                     setEnd_IntakeFileLoading(list.get(i).getEND_DTTM());
@@ -127,7 +134,7 @@ public class UNETMemberETA {
                     l1 = aWeekBackObject("NONE", "seqMbrITKExtrc", dateALastWeek(list.get(i).getCREAT_DTTM()), session);
                     long sf = timeDiffCalculate(l1.get(0).getEND_DTTM(), start_IntakeFileLoading_aWeekAgo);
                     setEnd_IntakeFileLoading(new Timestamp(sf+UNETMemberETA.getStart_IntakeFileLoading().getTime()));
-//                    logger.info(" Intake File Loading in progress with ETA = " + addExtraMargin(end_PreProcessor, 1800000));
+                    logger.info(" Intake File Loading in progress with ETA = " + addExtraMargin(getEnd_IntakeFileLoading(), 1800000));
                     System.out.println("the end time of Intake File Loading " + addExtraMargin(UNETMemberETA.getEnd_IntakeFileLoading(), 1800000)/* added to end time of prepreprocessor*/);
                 }
 
@@ -141,7 +148,7 @@ public class UNETMemberETA {
                     l2 = aWeekBackObject("UNET", "seqOPAGenDBITopsFeedback", dateALastWeek(list.get(i).getCREAT_DTTM()),session);
                     long sf = timeDiffCalculate(l2.get(0).getEND_DTTM(), l1.get(0).getSTRT_DTTM());
                     setEnd_DBIProcessing( new Timestamp(UNETProviderETA.getEnd_Intake().getTime()+sf + 120000));
-//                    logger.info(" DBIProcessing on plan with ETA = "+ addExtraMargin(UNETProviderETA.getEnd_835EPS_B2B(), 1800000));
+                    logger.info(" DBIProcessing on plan with ETA = "+ addExtraMargin(getEnd_DBIProcessing(), 1800000));
                     System.out.println("the end time of DBIProcessing "+ addExtraMargin(getEnd_DBIProcessing(), 1800000) /* added to end time of Payment Processing*/);
                 }
             }
@@ -152,7 +159,7 @@ public class UNETMemberETA {
                 l2 = aWeekBackObject("UNET", "seqOPAGenDBITopsFeedback", dateALastWeek(list.get(i).getCREAT_DTTM()),session);
                 long sf = timeDiffCalculate(l2.get(0).getEND_DTTM(), l1.get(0).getSTRT_DTTM());
                 setEnd_DBIProcessing(new Timestamp(UNETProviderETA.getEnd_Intake().getTime()+sf + 120000));
-//                logger.info(" DBIProcessing in progress with ETA = "+ addExtraMargin(UNETProviderETA.getEnd_835EPS_B2B(), 1800000));
+                logger.info(" DBIProcessing in progress with ETA = "+ addExtraMargin(getEnd_DBIProcessing(), 1800000));
                 System.out.println("the end time of DBIProcessing "+ addExtraMargin(getEnd_DBIProcessing(), 1800000) /* added to end time of Payment Processing*/);
             }
             if(list.get(i).getBTCH_NM().equals("seqOPAGenDBITopsFeedback") ){
@@ -162,13 +169,13 @@ public class UNETMemberETA {
             }
 
             if (!list.get(i).getBTCH_NM().equals("seqMbrSchedule") && flag_SchedulingOfSub == 1 && list.size() <=5) {
-                if (UNETMemberETA.getEnd_SchedulingOfSub() == null) {
+                if (getEnd_DBIProcessing()!=null  && UNETMemberETA.getEnd_SchedulingOfSub() == null) {
                     flag_SchedulingOfSub = 0;
                     System.out.println("on plan");
                     l1 = aWeekBackObject("NONE", "seqMbrSchedule", dateALastWeek(list.get(i).getCREAT_DTTM()), session);
                     long sf = timeDiffCalculate(l1.get(0).getEND_DTTM(), l1.get(0).getSTRT_DTTM());
                     setEnd_SchedulingOfSub(new Timestamp(sf+UNETMemberETA.getEnd_DBIProcessing().getTime()));
-//                    logger.info(" Scheduling Of Sub on plan with ETA = " + addExtraMargin(end_PreProcessor, 1800000));
+                    logger.info(" Scheduling Of Sub on plan with ETA = " + addExtraMargin(getEnd_SchedulingOfSub(), 1800000));
                     System.out.println("the end time of Scheduling Of Sub " + addExtraMargin(getEnd_SchedulingOfSub(), 1800000) /* added to end time of prepreprocessor*/);
                 }
             }
@@ -193,11 +200,11 @@ public class UNETMemberETA {
                 if(getEnd_SchedulingOfSub()!=null && getEnd_Harvesting() == null){
                     flag_Harvesting =0;
                     System.out.println("on plan");
-                    l1 = aWeekBackObject("UNET","seqMbrEmptyRlseBkt", dateALastWeek(list.get(i).getCREAT_DTTM()), session);
-                    l2 = aWeekBackObject("UNET", "seqMbrExtLoadHarvesting", dateALastWeek(list.get(i).getCREAT_DTTM()),session);
+                    l1 = aWeekBackObject("NONE","seqMbrEmptyRlseBkt", dateALastWeek(list.get(i).getCREAT_DTTM()), session);
+                    l2 = aWeekBackObject("PE", "seqMbrExtLoadHarvesting", dateALastWeek(list.get(i).getCREAT_DTTM()),session);
                     long sf = timeDiffCalculate(l2.get(0).getEND_DTTM(), l1.get(0).getSTRT_DTTM());
                     setEnd_Harvesting( new Timestamp(getEnd_SchedulingOfSub().getTime()+sf));
-//                    logger.info(" Harvesting on plan with ETA = "+ addExtraMargin(UNETProviderETA.getEnd_835EPS_B2B(), 1800000));
+                    logger.info(" Harvesting on plan with ETA = "+ addExtraMargin(getEnd_Harvesting(), 1800000));
                     System.out.println("the end time of Harvesting "+ addExtraMargin(getEnd_Harvesting(), 1800000) /* added to end time of Payment Processing*/);
                 }
             }
@@ -222,12 +229,12 @@ public class UNETMemberETA {
                 if(getEnd_Harvesting()!=null && getEnd_ConsolidationNOverpayment() == null){
                     flag_ConsolidationNOverpayment =0;
                     System.out.println("on plan");
-                    l1 = aWeekBackObject("UNET","seqMbrPayment1", dateALastWeek(list.get(i).getCREAT_DTTM()), session);
-                    l2 = aWeekBackObject("UNET", "seqMbrOTSUnlockUnused", dateALastWeek(list.get(i).getCREAT_DTTM()),session);
+                    l1 = aWeekBackObject("NONE","seqMbrPayment1", dateALastWeek(list.get(i).getCREAT_DTTM()), session);
+                    l2 = aWeekBackObject("NONE", "seqMbrOTSUnlockUnused", dateALastWeek(list.get(i).getCREAT_DTTM()),session);
                     long sf = timeDiffCalculate(l2.get(0).getEND_DTTM(), l1.get(0).getSTRT_DTTM());
                     end_Payment = new Timestamp(getEnd_Harvesting().getTime()+300000+timeDiffCalculate(l1.get(0).getEND_DTTM(),l1.get(0).getSTRT_DTTM()));
                     setEnd_ConsolidationNOverpayment( new Timestamp(getEnd_Harvesting().getTime()+sf+300000));
-//                    logger.info(" Consolidation N Overpayment on plan with ETA = "+ addExtraMargin(UNETProviderETA.getEnd_835EPS_B2B(), 1800000));
+                    logger.info(" Consolidation N Overpayment on plan with ETA = "+ addExtraMargin(getEnd_ConsolidationNOverpayment(), 1800000));
                     System.out.println("the end time of Consolidation N Overpayment "+ addExtraMargin(getEnd_ConsolidationNOverpayment(), 1800000) /* added to end time of Payment Processing*/);
                 }
             }
@@ -256,7 +263,7 @@ public class UNETMemberETA {
                     l2 = aWeekBackObject("NONE", "seqBenHdrIDMbrLoadRespTbl", dateALastWeek(list.get(i).getCREAT_DTTM()),session);
                     long sf = timeDiffCalculate(l2.get(0).getEND_DTTM(), l1.get(0).getSTRT_DTTM());
                     setEnd_BenefitHeaderProcessing( new Timestamp(end_Payment.getTime()+sf+180000));
-//                    logger.info(" Benefit Header Processing on plan with ETA = "+ addExtraMargin(UNETProviderETA.getEnd_835EPS_B2B(), 1800000));
+                    logger.info(" Benefit Header Processing on plan with ETA = "+ addExtraMargin(getEnd_BenefitHeaderProcessing(), 1800000));
                     System.out.println("the end time of Benefit Header Processing "+ addExtraMargin(getEnd_BenefitHeaderProcessing(), 1800000) /* added to end time of Payment Processing*/);
                 }
             }
@@ -284,7 +291,7 @@ public class UNETMemberETA {
                     l1 = aWeekBackObject("NONE","seqMbrOFSPmtData", dateALastWeek(list.get(i).getCREAT_DTTM()), session);
                     long sf = timeDiffCalculate(l1.get(0).getEND_DTTM(), l1.get(0).getSTRT_DTTM());
                     setEnd_CorePayment( new Timestamp(getEnd_ConsolidationNOverpayment().getTime()+sf));
-//                    logger.info(" Core Payment on plan with ETA = "+ addExtraMargin(UNETProviderETA.getEnd_835EPS_B2B(), 1800000));
+                    logger.info(" Core Payment on plan with ETA = "+ addExtraMargin(getEnd_CorePayment(), 1800000));
                     System.out.println("the end time of Core Payment "+ addExtraMargin(getEnd_CorePayment(), 1800000) /* added to end time of Payment Processing*/);
                 }
             }
@@ -312,7 +319,7 @@ public class UNETMemberETA {
                     l2 = aWeekBackObject("NONE", "seqeHealthMbrCreateFeedBckFiles", dateALastWeek(list.get(i).getCREAT_DTTM()),session);
                     long sf = timeDiffCalculate(l2.get(0).getEND_DTTM(), l1.get(0).getSTRT_DTTM());
                     setEnd_MemberEhealthFeedbackFile( new Timestamp(getEnd_BenefitHeaderProcessing().getTime()+sf+180000));
-//                    logger.info(" Member Ehealth FeedbackFile on plan with ETA = "+ addExtraMargin(UNETProviderETA.getEnd_835EPS_B2B(), 1800000));
+                    logger.info(" Member Ehealth FeedbackFile on plan with ETA = "+ addExtraMargin(getEnd_MemberEhealthFeedbackFile(), 1800000));
                     System.out.println("the end time of Member Ehealth FeedbackFile "+ addExtraMargin(getEnd_MemberEhealthFeedbackFile(), 1800000) /* added to end time of Payment Processing*/);
                 }
             }
@@ -339,7 +346,7 @@ public class UNETMemberETA {
                     l1 = aWeekBackObject("401","seqMbr03CreateFICSFile", dateALastWeek(list.get(i).getCREAT_DTTM()), session);
                     long sf = timeDiffCalculate(l1.get(0).getEND_DTTM(), l1.get(0).getSTRT_DTTM());
                     setEnd_PostPayExtract( new Timestamp(getEnd_MemberEhealthFeedbackFile().getTime()+sf));
-//                    logger.info(" Post Pay Extract on plan with ETA = "+ addExtraMargin(UNETProviderETA.getEnd_835EPS_B2B(), 1800000));
+                    logger.info(" Post Pay Extract on plan with ETA = "+ addExtraMargin(getEnd_PostPayExtract(), 1800000));
                     System.out.println("the end time of  Post Pay Extract "+ addExtraMargin(getEnd_PostPayExtract(), 1800000) /* added to end time of Payment Processing*/);
                 }
             }

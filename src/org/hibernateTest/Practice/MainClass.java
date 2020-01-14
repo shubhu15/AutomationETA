@@ -18,7 +18,10 @@ public class MainClass {
         ExcelComparison excelComparison = new ExcelComparison();
         sessionFactory = buildSessionFactory();
         excelComparison.updateExcelSheet(current_date);
+        UNETMemberETA unetMemberETA= new UNETMemberETA();
         unetProviderETA.getQuery(current_date, sessionFactory);
+        unetMemberETA.getQuery(current_date, sessionFactory);
+
 //        testData.getQuery(current_date, sessionFactory);
 //        String current_date = new SimpleDateFormat("YYYY-MM-dd").format(new Date());
 //        excelComparison.getQuery("2020-01-08", sessionFactory);
